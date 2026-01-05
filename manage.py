@@ -2,6 +2,27 @@
 """Django's command-line utility for administrative tasks."""
 import os
 import sys
+import django
+from django.conf import settings
+
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'insurance_project.settings') # <--- CHANGE 'insurance_project' to your folder name!
+django.setup()
+
+from django.contrib.auth.models import User
+
+def create_user():
+    USERNAME = 'admin'
+    PASSWORD = 'beauwattsre123'
+    EMAIL = 'leongmr0824@gmail.com'
+
+    if User.objects.filter(username=USERNAME).exists():
+        print("Superuser already exists. Skipping...")
+    else:
+        User.objects.create_superuser(USERNAME, EMAIL, PASSWORD)
+        print(f"Superuser {USERNAME} created successfully!")
+
+if __name__ == "__main__":
+    create_user()
 
 
 def main():
