@@ -78,8 +78,7 @@ WSGI_APPLICATION = 'insurance_project.wsgi.application'
 
 DATABASES = {
     'default': dj_database_url.config(
-        default='postgresql://insurance_admin:secret123@localhost:5432/db_insurance',
-        conn_max_age=600
+        default=config('DATABASE_URL', default='postgresql://postgres:123456789@localhost:5432/db_insurance')
     )
 }
 

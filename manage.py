@@ -11,8 +11,8 @@ django.setup()
 from django.contrib.auth.models import User
 
 def create_user():
-    USERNAME = 'admin'
-    PASSWORD = 'beauwattsre123'
+    USERNAME = 'postgres'
+    PASSWORD = '123456789'
     EMAIL = 'leongmr0824@gmail.com'
 
     if User.objects.filter(username=USERNAME).exists():
