@@ -36,6 +36,7 @@ class Customer(models.Model):
 class Insurance(models.Model):
     no_insurance = models.CharField(primary_key=True, max_length=100)
     sum_amount = models.DecimalField(max_digits=10, decimal_places=2)
+    income_loss = models.DecimalField(max_digits=12, decimal_places=2, default=0.00)
     starting_period = models.DateField()
     end_period = models.DateField()
     id_customer = models.ForeignKey(Customer, on_delete=models.CASCADE, db_column='id_customer')
@@ -104,3 +105,7 @@ class InsuranceRenewalNotice(models.Model):
 
     def __str__(self):
         return f"{self.insurance.no_insurance} - Renewal for {self.renewal_year}"
+
+class CustomerFile(models.Model):
+    customer = models.ForeignKey(Customer, on_delete=models.CASCADE)
+    uploaded_file = models.FileField(upload_to='customer_docs/')

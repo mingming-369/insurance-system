@@ -37,7 +37,9 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
+    'cloudinary_storage',
     'django.contrib.staticfiles',
+    'cloudinary',
     'insurance_app',
 ]
 
@@ -137,3 +139,11 @@ LOGIN_REDIRECT_URL = 'main_page'
 # These settings are now active for local media
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+CLOUDINARY_STORAGE = {
+    'CLOUD_NAME': 'ddmijpzvf',
+    'API_KEY': '122865178881528',
+    'API_SECRET': 'XZGtCotasK4WViZ-PR9O2LMVxl8'
+}
+
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
